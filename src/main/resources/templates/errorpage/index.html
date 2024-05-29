@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{partials/head}"></div>
+</head>
+
+<body>
+    <div class="col-lg-8 mx-auto p-4 py-md-5">
+        <div th:replace="~{partials/header}"></div>
+
+        <main>
+
+            <div class="alert alert-danger" role="alert">
+                <h4>An error occurred</h4>
+                <p>Status Code: <span th:text="${statusCode}"></span></p>
+                <p>Error: <span th:text="${errorMessage}"></span></p>
+                <p>Message: <span th:text="${message}"></span></p>
+            </div>
+        </main>
+    </div>
+
+    <div th:replace="~{partials/footer}"></div>
+</body>
+
+</html>
