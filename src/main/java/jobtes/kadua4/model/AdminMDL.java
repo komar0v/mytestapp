@@ -1,6 +1,5 @@
 package jobtes.kadua4.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 import jakarta.persistence.Entity;

@@ -6,7 +6,6 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jobtes.kadua4.model.AdminMDL;
 import jobtes.kadua4.model.MemberMDL;
 import jobtes.kadua4.repos.MemberRepository;
 
