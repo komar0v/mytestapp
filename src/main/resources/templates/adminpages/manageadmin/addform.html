@@ -1,0 +1,39 @@
+<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item">Manage Admins</li>
+            <li class="breadcrumb-item active" aria-current="page">Add Admin</li>
+        </ol>
+    </nav>
+    <div class="row my-4">
+        <div class="col-12 col-xl-12 mb-4 mb-lg-0">
+            <div class="card">
+                <h5 class="card-header">Create New Admin</h5>
+                <div class="card-body">
+                    <form action="/admin/manage-admins/add" method="post">
+                        <div class="mb-3">
+                            <label for="basic-url" class="form-label">Username</label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="username" name="username">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="basic-url" class="form-label">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+                        </div>
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <input type="submit" class="btn btn-success" value="Submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer class="pt-5">
+        <p class="text-center">Theme By ©<a href="https://themesberg.com">Themesberg</a></p>
+
+    </footer>
+</main>

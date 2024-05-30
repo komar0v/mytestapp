@@ -1,0 +1,64 @@
+<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item active" aria-current="page">Manage Admins</li>
+        </ol>
+    </nav>
+    <h1 class="h2">Manage Admins</h1>
+    <p>Create, Read, Update, or Delete Admin </p>
+    
+    <div class="row my-4">
+        <div class="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <div class="card">
+                <h5 class="card-header">Create New</h5>
+                <div class="card-body">
+                    <a th:href="@{/admin/manage-admins/add}" class="btn btn-sm btn-success">Create New</a>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
+            <div class="card">
+                <h5 class="card-header">Export Data</h5>
+                <div class="card-body">
+                    <a href="#" class="btn btn-sm btn-primary">Excel</a>
+                    <a href="#" class="btn btn-sm btn-primary">PDF</a>
+                </div>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-xl-12 mb-4 mb-lg-0">
+            <div class="card">
+                <h5 class="card-header">Admin List</h5>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Username</th>
+                                    <th scope="col">Created At</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr th:each="admin : ${administrators}">
+                                    <td th:text="${admin.username}"></td>
+                                    <td th:text="${admin.createdAt}"></td>
+                                    <td><a th:href="@{/admin/manage-admins/show-details/{id}(id=${admin.id})}" class="btn btn-sm btn-secondary">View</a> | <a th:href="@{/admin/manage-admins/edit/{id}(id=${admin.id})}" class="btn btn-sm btn-info">Edit</a> | <a th:if="${admin.username != session.username}" th:href="@{/admin/manage-admins/delete/{id}(id=${admin.id})}" class="btn btn-sm btn-danger">Delete</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <footer class="pt-5">
+        <p class="text-center">Theme By ©<a href="https://themesberg.com">Themesberg</a></p>
+        
+    </footer>
+</main>

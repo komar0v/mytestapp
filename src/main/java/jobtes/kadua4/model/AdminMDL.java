@@ -1,5 +1,7 @@
 package jobtes.kadua4.model;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +20,15 @@ public class AdminMDL {
     private String username;
     private String password;
     private String role;
+    private LocalDateTime created_at;
+
+    public LocalDateTime getCreatedAt() {
+        return created_at;
+    }
+
+    public void setCreatedAt(LocalDateTime created_at) {
+        this.created_at = created_at;
+    }
     
     public String getRole() {
         return role;
@@ -26,6 +37,7 @@ public class AdminMDL {
     public void setRole(String role) {
         this.role = role;
     }
+
     public UUID getId() {
         return id;
     }
