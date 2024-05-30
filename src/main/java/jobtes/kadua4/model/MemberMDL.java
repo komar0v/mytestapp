@@ -1,6 +1,7 @@
 package jobtes.kadua4.model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -24,6 +25,7 @@ public class MemberMDL {
 
     private String password;
     private String no_hp;
+    
     private LocalDate tanggal_lahir;
 
     @Column(unique = true)
@@ -31,10 +33,20 @@ public class MemberMDL {
 
     private String jenis_kelamin;
     private String no_ktp;
-    @Lob
+    @Column(columnDefinition="bytea")
     private byte[] foto_diri;
 
     private String role;
+    private LocalDateTime created_at;
+
+    public LocalDateTime getCreatedAt() {
+        return created_at;
+    }
+
+    public void setCreatedAt(LocalDateTime created_at) {
+        this.created_at = created_at;
+    }
+
     public String getRole() {
         return role;
     }

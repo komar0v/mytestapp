@@ -1,0 +1,70 @@
+<main class="col-md-9 ml-sm-auto col-lg-10 px-md-4 py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Home</li>
+            <li class="breadcrumb-item active" aria-current="page">Manage Member</li>
+        </ol>
+    </nav>
+    <h1 class="h2">Manage Member</h1>
+    <p>Create, Read, Update, or Delete Member </p>
+    
+    <div class="row my-4">
+        <div class="col-12 col-md-6 col-lg-3 mb-4 mb-lg-0">
+            <div class="card">
+                <h5 class="card-header">Create New</h5>
+                <div class="card-body">
+                    <a th:href="@{/admin/manage-members/add}" class="btn btn-sm btn-success">Create New</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mb-4 mb-lg-0 col-lg-3">
+            <div class="card">
+                <h5 class="card-header">Export Data</h5>
+                <div class="card-body">
+                    <a href="#" class="btn btn-sm btn-primary">Excel</a>
+                    <a href="#" class="btn btn-sm btn-primary">PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-xl-12 mb-4 mb-lg-0">
+            <div class="card">
+                <h5 class="card-header">Member List</h5>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Nomer HP</th>
+                                    <th scope="col">Jenis Kelamin</th>
+                                    <th scope="col">Created At</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr th:each="member : ${members}">
+                                    <td th:text="${member.name}"></td>
+                                    <td th:text="${member.email}"></td>
+                                    <td th:text="${member.no_hp}"></td>
+                                    <td th:text="${member.jenis_kelamin}"></td>
+                                    <td th:text="${member.createdAt}"></td>
+                                    <td><a th:href="@{/admin/manage-members/show-details/{id}(id=${member.id})}" class="btn btn-sm btn-secondary">View</a> | <a th:href="@{/admin/manage-members/edit/{id}(id=${member.id})}" class="btn btn-sm btn-info">Edit</a> | <a th:href="@{/admin/manage-members/delete/{id}(id=${member.id})}" class="btn btn-sm btn-danger">Delete</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <footer class="pt-5">
+        <p class="text-center">Theme By ©<a href="https://themesberg.com">Themesberg</a></p>
+        
+    </footer>
+</main>

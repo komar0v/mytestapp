@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <div th:replace="~{partials/admin_panels/head}"></div>
+</head>
+<body>
+    <div th:replace="~{partials/admin_panels/headers}"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div th:replace="~{partials/admin_panels/sidebar_admin}"></div>
+            <!-- content -->
+            <div th:replace="~{adminpages/managemember/addform}"></div>
+            <!-- endcontent -->
+        </div>
+    </div>
+    <div th:replace="~{partials/admin_panels/jsscript}"></div>
+</body>
+</html>
