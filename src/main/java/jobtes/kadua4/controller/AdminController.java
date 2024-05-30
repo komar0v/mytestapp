@@ -13,16 +13,16 @@ import org.springframework.ui.Model;
 import jobtes.kadua4.model.AdminMDL;
 import jobtes.kadua4.services.AdminService;
 
-@RequestMapping("/admins")
+@RequestMapping("/admin/dashboard")
 public class AdminController {
 @Autowired
     private AdminService adminService;
 
-    // @GetMapping("/list")
-    // public String listAdministrators(Model model) {
-    //     model.addAttribute("administrators", adminService.getAllAdmins());
-    //     return "wrapper/appadminmanage";
-    // }
+    @GetMapping("/list")
+    public String listAdministrators(Model model) {
+        model.addAttribute("administrators", adminService.getAllAdmins());
+        return "wrapper/appadminmanage";
+    }
 
     @GetMapping("/add")
     public String showAddForm(Model model) {
