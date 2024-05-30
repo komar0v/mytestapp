@@ -10,7 +10,15 @@
         <div th:replace="~{partials/header}"></div>
 
         <main>
-            <div th:replace="~{memberpages/home/memberhome}"></div>
+            <div class="row">
+                <div class="col">
+                    <div th:replace="~{partials/sidebar_member}"></div>
+                </div>
+                <div class="col">
+                    <div th:replace="~{memberpages/home/memberhome}"></div>
+                </div>
+            </div>
+
         </main>
     </div>
 

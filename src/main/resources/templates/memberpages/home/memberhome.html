@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Member Home</title>
-</head>
-<body>
-    <h1>Welcome Member</h1>
-    <!-- Member-specific content -->
-</body>
-</html>
+<h2>Welcome, <span th:text="${session.email}">Email</span></h2>
+
+<a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" th:href="@{/member/profile/me}">
+    <h2>Go to My Profile</h2>
+</a>

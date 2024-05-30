@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <div th:replace="~{partials/head}"></div>
+</head>
+
+<body>
+    <div class="col-lg-8 mx-auto p-4 py-md-5">
+        <div th:replace="~{partials/header}"></div>
+
+        <main>
+            <div class="row">
+                <div class="col">
+                    <div th:replace="~{partials/sidebar_member}"></div>
+                </div>
+                <div class="col-lg-9">
+                    <div class="card">
+                        <h5 class="card-header">Member Details</h5>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label">Nama</label>
+                                        <div class="input-group">
+                                            <strong th:text="${memberData.name}"></strong>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Email</label>
+                                        <div class="input-group">
+                                            <strong th:text="${memberData.email}"></strong>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">No HP</label>
+                                        <div class="input-group">
+                                            <strong th:text="${memberData.no_hp}"></strong>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">No KTP</label>
+                                        <div class="input-group">
+                                            <strong th:text="${memberData.no_ktp}"></strong>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Tanggal Lahir</label>
+                                        <div class="input-group">
+                                            <strong th:text="${memberData.tanggal_lahir}"></strong>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Jenis Kelamin</label>
+                                        <div class="input-group">
+                                            <strong th:text="${memberData.jenis_kelamin}"></strong>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div th:if="${memberData.foto_diri == null}" class="col">
+                                    <img class="img-fluid" width="400" height="400"
+                                        src="https://dummyimage.com/400x400/000/fff">
+                                </div>
+                                <div th:if="${memberData.foto_diri != null}" class="col">
+                                    <img class="img-fluid" width="400" height="400"
+                                        th:src="@{'data:image/png;base64,' + ${base64image}}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <a th:href="@{/member/profile/edit}" class="btn btn-primary" type="button">Edit Profile</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <div th:replace="~{partials/footer}"></div>
+</body>
+
+</html>

@@ -57,8 +57,8 @@ public class AuthController {
 
     @GetMapping("/member/home")
     public String memberHome(Principal principal, HttpSession session) {
-        String username = principal.getName();
-        session.setAttribute("username", username);
+        String email = principal.getName();
+        session.setAttribute("email", email);
         return "wrapper/memberwrapper/memberpanel";
     }
 }

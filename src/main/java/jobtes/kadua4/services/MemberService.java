@@ -51,4 +51,15 @@ public class MemberService {
 
         return memberRepository.save(member);
     }
+
+    public MemberMDL getMemberByEmail(String email) {
+        return memberRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Member not found"));
+    }
+
+    public void savePhoto(UUID id, byte[] photoBytes) {
+        MemberMDL member = memberRepository.findById(id).orElseThrow(() -> new RuntimeException("Member not found"));
+        member.setFoto_diri(photoBytes);
+        memberRepository.save(member);
+    }
 }
