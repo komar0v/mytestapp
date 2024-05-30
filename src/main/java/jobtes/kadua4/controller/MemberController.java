@@ -1,5 +1,6 @@
 package jobtes.kadua4.controller;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.UUID;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import jobtes.kadua4.model.AdminMDL;
+import jakarta.servlet.http.HttpServletResponse;
 import jobtes.kadua4.model.MemberMDL;
+import jobtes.kadua4.services.ExportService;
 import jobtes.kadua4.services.MemberService;
 
 @Controller
@@ -24,10 +26,12 @@ public class MemberController {
 @Autowired
     private MemberService memberService;
     private final PasswordEncoder passwordEncoder;
+    private final ExportService exportService;
 
-    public MemberController(MemberService memberService, PasswordEncoder passwordEncoder) {
+    public MemberController(MemberService memberService, PasswordEncoder passwordEncoder, ExportService exportService) {
         this.memberService = memberService;
         this.passwordEncoder = passwordEncoder;
+        this.exportService = exportService;
     }
 
     @GetMapping("/member-list")
@@ -100,5 +104,16 @@ public class MemberController {
         member.setPassword(password);
         memberService.updateMember(id, member);
         return "redirect:/admin/manage-members/member-list";
+    }
+
+    //--handling exports ke File
+    @GetMapping("/export/excel")
+    public void exportToExcel(HttpServletResponse response) throws IOException {
+        exportService.exportToExcel(response);
+    }
+
+    @GetMapping("/export/pdf")
+    public void exportToPDF(HttpServletResponse response) throws IOException {
+        exportService.exportToPDF(response);
     }
 }

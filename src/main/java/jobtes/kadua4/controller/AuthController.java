@@ -3,6 +3,7 @@ package jobtes.kadua4.controller;
 import java.security.Principal;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,6 +16,10 @@ import jakarta.servlet.http.HttpSession;
 public class AuthController {
     @GetMapping("/admin/login")
     public String adminLogin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated() && !authentication.getPrincipal().equals("anonymousUser")) {
+            return "redirect:/admin/home";
+        }
         return "loginpage/adminlogin";
     }
 
@@ -35,6 +40,10 @@ public class AuthController {
 
     @GetMapping("/member/login")
     public String memberLogin() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.isAuthenticated() && !authentication.getPrincipal().equals("anonymousUser")) {
+            return "redirect:/member/home";
+        }
         return "loginpage/memberlogin";
     }
 
@@ -47,7 +56,9 @@ public class AuthController {
     }
 
     @GetMapping("/member/home")
-    public String memberHome() {
-        return "memberpages/home/memberhome";
+    public String memberHome(Principal principal, HttpSession session) {
+        String username = principal.getName();
+        session.setAttribute("username", username);
+        return "wrapper/memberwrapper/memberpanel";
     }
 }
