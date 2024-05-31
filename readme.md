@@ -1,5 +1,14 @@
 # Getting Started
 
+### Default Credentials
+Administrator
+admin
+admin
+
+Member
+memberr1@mail.com
+member
+
 ### Reference Documentation
 For further reference, please consider the following sections:
 
