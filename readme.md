@@ -2,12 +2,12 @@
 
 ### Default Credentials
 Administrator
-admin
-admin
+*  username= admin
+*  pass= admin
 
 Member
-memberr1@mail.com
-member
+*  email= memberr1@mail.com
+*  pass= member
 
 ### Reference Documentation
 For further reference, please consider the following sections:
